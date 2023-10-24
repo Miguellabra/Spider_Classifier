@@ -4,7 +4,7 @@ import streamlit as st
 from PIL import ImageOps, Image
 import numpy as np
 from keras.layers import Conv2D
-#import cv2
+import cv2
 
 
 def set_background(image_file):
@@ -40,12 +40,21 @@ def classify(image, model, class_names):
     Returns:
         A tuple of the predicted class name and the confidence score for that prediction.
     """
-    image = ImageOps.fit(image, (32, 32), Image.Resampling.LANCZOS)
-    image_array = np.asarray(image)
-    img = image_array.reshape((1,32,32,3))
-    prediction = model.predict(img)
-    index = np.argmax(prediction)
-    class_name = class_names[index]
-    confidence_score = prediction[0][index]
+    #image = ImageOps.fit(image, (32, 32), Image.Resampling.LANCZOS)
+    #image_array = np.asarray(image)
+    #image = np.expand_dims(image_array,0)
+    #image = image_array.reshape((1,32,32,3))
+    
+    #prediction = model(img)
+    #index = np.argmax(prediction)
+    #class_name = class_names[index]
+    #confidence_score = prediction[0][index]
+    
+    #image = cv2.imread(image)
+    image = cv2.resize(image, (32,32))
+    image = np.expand_dims(image,0)
+    class_name = class_names[int(np.argmax(model(image),1))]
+    confidence_score = 1
+    index = 0
 
     return class_name, confidence_score, index,
