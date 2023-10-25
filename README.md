@@ -30,8 +30,6 @@ The spider spieces considered are the following:
 As mentioned previously, the training set consists of 2186 images, while the test set comprises 75 images. While this number might seem insufficient for building a robust model, I employed a **data augmentation** technique to generate additional images for each original one. This technique was applied twice: once before feeding the data to the model using the ImageDataGenerator() function, and another during training by adding a layer to the model with the RandomFlip() function.
 
 ### Model and Results
-The initial convolutional neural network achieved a final accuracy of 91%, with a validation accuracy of 90%. This model was trained over 55 epochs, using a batch size of 20, and the 'Adamax' optimizer. In addition, both MaxPooling2D() and Dropout() functions were integrated into some layers of the model.
-
-The second neural network...
+The initial convolutional neural network achieved a final accuracy of 90%, with a validation accuracy of 90%. This model was trained over 55 epochs, using a batch size of 20, and the 'Adamax' optimizer. In addition, both MaxPooling2D() and Dropout() functions were integrated into some layers of the model.
 ### The API
-The API was developed using the Streamlit library and hosted on GitHub Pages. However, a challenge arose when the model, saved as an .h5 file, proved too large for a GitHub repository. To address this issue, the file was first converted to a joblib format. An alternative option was to handle it as a pickle file, although this method has the potential to impact all the model's parameter weights
+The API was developed using the Streamlit library and will be hosted through the community cloud of Streamlit once the last details of the app are finalized. In this repository, you can find the architecture of the app.
